@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  p Wpisz nazwe pliku
+  form(action="/data/save", method="post")
+    input
+    input(type="submit", value="Zapisz")
