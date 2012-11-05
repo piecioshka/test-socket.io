@@ -1,8 +1,9 @@
-
-/*
- * GET home page.
- */
+var fs = require("fs");
 
 exports.data = function(req, res) {
-  res.render('data', { title: 'Data' });
+  fs.readdir("temp", function (err, files) {
+    var params = { title: "Data" };
+    params.files = files;
+    res.render('data', params);
+  });
 };

@@ -2,5 +2,6 @@ extends layout
 
 block content
   ul
-    li
-      a(href="#") lista plików
+    each file in files
+      li
+        a(href="/path/#{file}") #{file}

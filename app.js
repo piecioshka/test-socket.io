@@ -5,6 +5,7 @@ var express = require('express')
   , routes = require('./routes')
   , routes_data = require('./routes/data').data
   , routes_save = require('./routes/save').save
+  , routes_open_file = require('./routes/file').open
   , http = require('http')
   , path = require('path');
 
@@ -28,6 +29,7 @@ app.configure('development', function(){
 
 app.get('/', routes.index);
 app.get('/data', routes_data);
+app.get('/path/:filename', routes_open_file);
 app.post('/data/save', routes_save);
 
 http.createServer(app).listen(app.get('port'), function(){
