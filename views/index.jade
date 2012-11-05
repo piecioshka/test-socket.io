@@ -3,5 +3,5 @@ extends layout
 block content
   p Wpisz nazwe pliku
   form(action="/data/save", method="post")
-    input
+    input(name="filename")
     input(type="submit", value="Zapisz")

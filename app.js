@@ -1,18 +1,17 @@
-
 /**
  * Module dependencies.
  */
-
 var express = require('express')
   , routes = require('./routes')
-  , user = require('./routes/user')
+  , routes_data = require('./routes/data').data
+  , routes_save = require('./routes/save').save
   , http = require('http')
   , path = require('path');
 
 var app = express();
 
 app.configure(function(){
-  app.set('port', process.env.PORT || 3000);
+  app.set('port', process.env.PORT || 4000);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.favicon());
@@ -28,9 +27,8 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
-app.get('/data/save', data.save);
-app.get('/data', data.list);
-app.get('/data/list', data.list);
+app.get('/data', routes_data);
+app.post('/data/save', routes_save);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

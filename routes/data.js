@@ -1,9 +1,8 @@
 
-exports.data = {
-    save: function () {
+/*
+ * GET home page.
+ */
 
-    },
-    list: function () {
-
-    }
-}
+exports.data = function(req, res) {
+  res.render('data', { title: 'Data' });
+};
