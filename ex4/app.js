@@ -1,5 +1,5 @@
 // note, io.listen(<port>) will create a http server for you
-var io = require('socket.io').listen(80);
+var io = require('socket.io').listen(4000);
 
 io.sockets.on('connection', function (socket) {
     io.sockets.emit('this', { will: 'be received by everyone'});
