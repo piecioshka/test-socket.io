@@ -1,14 +1,18 @@
+var utils = require("util");
 var io = require('socket.io').listen(4000);
 
-io.sockets.on('connection', function (socket) {
-    socket.emit("connection");
+io.sockets.on('connection', function (client) {
+    client.emit("connection");
 
-    socket.on('czesc', function () {
-        socket.emit('czesc');
+    client.on('czesc', function (response) {
+        // wita sie z nowym klientem
+        client.emit('czesc');
+        utils.log(response.name); // piecioshka
     });
 
-    socket.on('spadaj', function () {
-        socket.emit("jeb sie");
-        socket.emit("close");
+    client.on('spadaj', function () {
+        client.emit("jeb sie");
+        // wylacza sie
+        client.disconnect();
     });
 });

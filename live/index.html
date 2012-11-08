@@ -5,12 +5,14 @@
         console.log(data);
 
         console.log("witamy sie z serwekiem :)");
-        socket.emit('czesc');
+        socket.emit('czesc', { name: "piecioshka" });
 
-        console.log("obrazamy serwerek :|");
-        socket.emit('spadaj');
+        setTimeout(function () {
+            console.log("obrazamy serwerek :|");
+            socket.emit('spadaj');
+        }, 3000)
     });
-    socket.on("close", function () {
+    socket.on("disconnect", function () {
         console.log("no i serwerek sie wylaczyl ;(");
     })
 </script>
