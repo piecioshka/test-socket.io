@@ -1,0 +1,14 @@
+<script src="http://localhost:4000/socket.io/socket.io.js"></script>
+<script>
+    var socket = io.connect('http://localhost:4000');
+    socket.on('connection', function (data) {
+        console.log("witamy sie z serwekiem :)");
+        socket.emit('czesc');
+
+        console.log("obrazamy serwerek :|");
+        socket.emit('spadaj');
+    });
+    socket.on("close", function () {
+        console.log("no i serwerek sie wylaczyl ;(");
+    })
+</script>
