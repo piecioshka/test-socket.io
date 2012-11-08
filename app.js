@@ -1,15 +1,13 @@
 /**
  * Module dependencies.
  */
-var express = require('express')
+var app = require('express')()
   , routes = require('./routes')
   , routes_data = require('./routes/data').data
   , routes_save = require('./routes/save').save
   , routes_open_file = require('./routes/file').open
   , http = require('http')
   , path = require('path');
-
-var app = express();
 
 app.configure(function(){
   app.set('port', process.env.PORT || 4000);
